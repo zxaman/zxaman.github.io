@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greeting Card Name Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="controls">
+      <h1>Greeting Card Name Editor</h1>
+      <p>
+        Enter the guest name to place it automatically between "ke avasar per" and "sahparivar".
+        Font size is fixed to 44 and color is fixed to #A30000.
+      </p>
+
+      <label for="guestName">Guest Name</label>
+      <input id="guestName" type="text" placeholder="Type guest name" />
+
+      <div class="buttons">
+        <button id="downloadBtn" type="button">Download Image</button>
+      </div>
+    </section>
+
+    <section class="preview-wrap">
+      <canvas id="cardCanvas" aria-label="Greeting card preview"></canvas>
+    </section>
+  </main>
+
+  <script src="card-image-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
