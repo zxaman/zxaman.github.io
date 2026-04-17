@@ -29,5 +29,5 @@ Your live link will be:
 
 ## Notes
 
-- Keep these files in repo root: `index.html`, `style.css`, `script.js`, `card-image-data.js`, `Frame 4.png`.
-- If you replace `Frame 4.png`, regenerate `card-image-data.js` before deploy.
+- Keep these files in repo root: `index.html`, `style.css`, `script.js`, `card-image-data.js`, `Card.png`.
+- If you replace `Card.png`, regenerate `card-image-data.js` before deploy.

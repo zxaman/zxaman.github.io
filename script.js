@@ -8,7 +8,7 @@ const cardImage = new Image();
 const defaultImageSrc =
   typeof window.CARD_IMAGE_DATA_URL === "string" && window.CARD_IMAGE_DATA_URL.startsWith("data:image/")
     ? window.CARD_IMAGE_DATA_URL
-    : "Frame 4.png";
+    : "Card.png";
 
 cardImage.src = defaultImageSrc;
 
@@ -137,5 +137,5 @@ window.addEventListener("load", () => {
 
 cardImage.addEventListener("load", resizeCanvasToImage);
 cardImage.addEventListener("error", () => {
-  alert("Could not load 'Frame 4.png'. Keep image and files in the same folder.");
+  alert("Could not load 'Card.png'. Keep image and files in the same folder.");
 });
