@@ -2,6 +2,8 @@ const canvas = document.getElementById("cardCanvas");
 const ctx = canvas.getContext("2d");
 
 const guestNameInput = document.getElementById("guestName");
+const maleBtn = document.getElementById("maleBtn");
+const femaleBtn = document.getElementById("femaleBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
 const cardImage = new Image();
@@ -16,15 +18,31 @@ const FIXED_FONT_SIZE = 50;
 const FIXED_COLOR = "#A30000";
 const NAME_Y_RATIO = 0.320;
 
+const HONORIFICS = {
+  male: "श्री",
+  female: "श्रीमती",
+};
+
 const textState = {
-    
   value: "",
   x: 0,
   y: 0,
   size: FIXED_FONT_SIZE,
   color: FIXED_COLOR,
   fontFamily: '"Noto Serif Devanagari", Mangal, serif',
+  honorific: "male",
 };
+
+function updateHonorificButtons() {
+  maleBtn.classList.toggle("is-active", textState.honorific === "male");
+  femaleBtn.classList.toggle("is-active", textState.honorific === "female");
+}
+
+function setHonorific(honorific) {
+  textState.honorific = honorific;
+  updateHonorificButtons();
+  drawCard();
+}
 
 function getDisplayName() {
   const raw = textState.value.trim();
@@ -32,7 +50,13 @@ function getDisplayName() {
     return "";
   }
 
-  return raw.startsWith("श्री") ? raw : `श्री ${raw}`;
+  const normalized = raw.replace(/^(श्रीमती|श्री)\s*/, "").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  const prefix = HONORIFICS[textState.honorific] || HONORIFICS.male;
+  return `${prefix} ${normalized}`;
 }
 
 function centerBetweenLines() {
@@ -85,6 +109,14 @@ guestNameInput.addEventListener("input", () => {
   drawCard();
 });
 
+maleBtn.addEventListener("click", () => {
+  setHonorific("male");
+});
+
+femaleBtn.addEventListener("click", () => {
+  setHonorific("female");
+});
+
 downloadBtn.addEventListener("click", () => {
   if (!cardImage.complete || !canvas.width || !canvas.height) {
     alert("Image is still loading. Please wait a moment and try again.");
@@ -127,6 +159,7 @@ downloadBtn.addEventListener("click", () => {
 });
 
 downloadBtn.disabled = true;
+updateHonorificButtons();
 
 guestNameInput.value = "";
 guestNameInput.placeholder = "Type guest name";
