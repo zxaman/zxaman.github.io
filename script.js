@@ -16,7 +16,7 @@ cardImage.src = defaultImageSrc;
 
 const FIXED_FONT_SIZE = 45;
 const FIXED_COLOR = "#A30000";
-const NAME_Y_RATIO = 0.427;
+const NAME_Y_RATIO = 0.447;
 
 const HONORIFICS = {
   male: "श्री",
